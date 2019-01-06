@@ -1,11 +1,11 @@
 <?php
 
-namespace DevKokov\RotaPlanner\Week\Condition;
+namespace DevKokov\RotaPlanner\Condition\Week;
 
 use DevKokov\RotaPlanner\Day\DayInterface;
 use DevKokov\RotaPlanner\Shift\ShiftInterface;
 
-class ShiftsPerDaysOfWeek implements ConditionInterface
+class ShiftsPerDaysOfWeek implements WeekConditionInterface
 {
     private $days = [];
 

@@ -2,7 +2,7 @@
 
 namespace DevKokov\RotaPlanner\Worker;
 
-use DevKokov\RotaPlanner\Worker\Condition\ConditionInterface;
+use DevKokov\RotaPlanner\Condition\Worker\WorkerConditionInterface;
 
 class Worker implements WorkerInterface
 {
@@ -19,7 +19,7 @@ class Worker implements WorkerInterface
         return $this->name;
     }
 
-    public function addCondition(ConditionInterface $condition)
+    public function addCondition(WorkerConditionInterface $condition)
     {
         $this->conditions[] = $condition;
     }

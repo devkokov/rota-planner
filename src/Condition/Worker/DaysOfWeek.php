@@ -1,6 +1,6 @@
 <?php
 
-namespace DevKokov\RotaPlanner\Worker\Condition;
+namespace DevKokov\RotaPlanner\Condition\Worker;
 
 use DevKokov\RotaPlanner\Day\DayInterface;
 
@@ -10,7 +10,7 @@ use DevKokov\RotaPlanner\Day\DayInterface;
  *
  * Represents the days of week a worker can work
  */
-class DaysOfWeek implements ConditionInterface
+class DaysOfWeek implements WorkerConditionInterface
 {
     public $canWorkByDefault = true;
     private $days = [];

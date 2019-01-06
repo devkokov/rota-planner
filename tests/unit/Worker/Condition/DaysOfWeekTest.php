@@ -6,15 +6,15 @@ use DevKokov\RotaPlanner\Day\Monday;
 use DevKokov\RotaPlanner\Day\Sunday;
 use DevKokov\RotaPlanner\Day\Tuesday;
 use PHPUnit\Framework\TestCase;
-use DevKokov\RotaPlanner\Worker\Condition\ConditionInterface;
-use DevKokov\RotaPlanner\Worker\Condition\DaysOfWeek;
+use DevKokov\RotaPlanner\Condition\Worker\WorkerConditionInterface;
+use DevKokov\RotaPlanner\Condition\Worker\DaysOfWeek;
 
 class DaysOfWeekTest extends TestCase
 {
     public function testClass()
     {
         $condition = new DaysOfWeek();
-        $this->assertInstanceOf(ConditionInterface::class, $condition);
+        $this->assertInstanceOf(\DevKokov\RotaPlanner\Condition\Worker\WorkerConditionInterface::class, $condition);
     }
 
     public function testCanWorkByDefault()

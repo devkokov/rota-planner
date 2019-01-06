@@ -6,7 +6,7 @@ use DevKokov\RotaPlanner\Shift\ShiftInterface;
 use PHPUnit\Framework\TestCase;
 use DevKokov\RotaPlanner\Week\Week;
 use DevKokov\RotaPlanner\Week\WeekInterface;
-use DevKokov\RotaPlanner\Week\Condition\ConditionInterface;
+use DevKokov\RotaPlanner\Condition\Week\WeekConditionInterface;
 use DevKokov\RotaPlanner\Worker\WorkerInterface;
 
 class WeekTest extends TestCase
@@ -21,7 +21,7 @@ class WeekTest extends TestCase
     {
         $week = new Week();
 
-        $conditionBuilder = $this->getMockBuilder(ConditionInterface::class);
+        $conditionBuilder = $this->getMockBuilder(WeekConditionInterface::class);
         $conditionA = $conditionBuilder->getMock();
         $conditionB = $conditionBuilder->getMock();
 
@@ -32,7 +32,7 @@ class WeekTest extends TestCase
 
         $this->assertIsArray($conditions);
         $this->assertCount(2, $conditions);
-        $this->assertContainsOnlyInstancesOf(ConditionInterface::class, $conditions);
+        $this->assertContainsOnlyInstancesOf(WeekConditionInterface::class, $conditions);
         $this->assertContains($conditionA, $conditions);
         $this->assertContains($conditionB, $conditions);
     }

@@ -3,7 +3,7 @@
 namespace DevKokov\RotaPlanner\Week;
 
 use DevKokov\RotaPlanner\Shift\ShiftInterface;
-use DevKokov\RotaPlanner\Week\Condition\ConditionInterface;
+use DevKokov\RotaPlanner\Condition\Week\WeekConditionInterface;
 use DevKokov\RotaPlanner\Worker\WorkerInterface;
 
 class Week implements WeekInterface
@@ -25,13 +25,13 @@ class Week implements WeekInterface
         return $this->workers;
     }
 
-    public function addCondition(ConditionInterface $condition)
+    public function addCondition(WeekConditionInterface $condition)
     {
         $this->conditions[] = $condition;
     }
 
     /**
-     * @return ConditionInterface[]
+     * @return \DevKokov\RotaPlanner\Condition\Week\WeekConditionInterface[]
      */
     public function getConditions(): array
     {

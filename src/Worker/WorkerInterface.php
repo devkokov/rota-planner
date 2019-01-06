@@ -2,16 +2,16 @@
 
 namespace DevKokov\RotaPlanner\Worker;
 
-use DevKokov\RotaPlanner\Worker\Condition\ConditionInterface;
+use DevKokov\RotaPlanner\Condition\Worker\WorkerConditionInterface;
 
 interface WorkerInterface
 {
     public function setName(string $name);
     public function getName(): string;
-    public function addCondition(ConditionInterface $condition);
+    public function addCondition(WorkerConditionInterface $condition);
 
     /**
-     * @return ConditionInterface[]
+     * @return \DevKokov\RotaPlanner\Condition\Worker\WorkerConditionInterface[]
      */
     public function getConditions(): array;
 }

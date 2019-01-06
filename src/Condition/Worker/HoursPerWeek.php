@@ -1,8 +1,8 @@
 <?php
 
-namespace DevKokov\RotaPlanner\Worker\Condition;
+namespace DevKokov\RotaPlanner\Condition\Worker;
 
-class HoursPerWeek implements ConditionInterface
+class HoursPerWeek implements WorkerConditionInterface
 {
     private $min = 0;
     private $max = 0;
