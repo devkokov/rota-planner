@@ -10,13 +10,13 @@ class HoursPerDayTest extends TestCase
 {
     public function testClass()
     {
-        $condition = new \DevKokov\RotaPlanner\Condition\Worker\HoursPerDay();
-        $this->assertInstanceOf(\DevKokov\RotaPlanner\Condition\WorkerConditionInterface::class, $condition);
+        $condition = new HoursPerDay();
+        $this->assertInstanceOf(WorkerConditionInterface::class, $condition);
     }
 
     public function testDefaultValues()
     {
-        $condition = new \DevKokov\RotaPlanner\Condition\Worker\HoursPerDay();
+        $condition = new HoursPerDay();
 
         $this->assertEquals(0, $condition->getMin());
         $this->assertEquals(0, $condition->getMax());
@@ -24,7 +24,7 @@ class HoursPerDayTest extends TestCase
 
     public function testSetValue()
     {
-        $condition = new \DevKokov\RotaPlanner\Condition\Worker\HoursPerDay();
+        $condition = new HoursPerDay();
 
         $condition->setMin(10.5);
         $condition->setMax(30.5);

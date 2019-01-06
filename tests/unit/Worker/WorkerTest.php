@@ -27,7 +27,7 @@ class WorkerTest extends TestCase
     {
         $worker = new Worker();
 
-        $conditionBuilder = $this->getMockBuilder(\DevKokov\RotaPlanner\Condition\WorkerConditionInterface::class);
+        $conditionBuilder = $this->getMockBuilder(WorkerConditionInterface::class);
         $conditionA = $conditionBuilder->getMock();
         $conditionB = $conditionBuilder->getMock();
 
@@ -38,7 +38,7 @@ class WorkerTest extends TestCase
 
         $this->assertIsArray($conditions);
         $this->assertCount(2, $conditions);
-        $this->assertContainsOnlyInstancesOf(\DevKokov\RotaPlanner\Condition\WorkerConditionInterface::class, $conditions);
+        $this->assertContainsOnlyInstancesOf(WorkerConditionInterface::class, $conditions);
         $this->assertContains($conditionA, $conditions);
         $this->assertContains($conditionB, $conditions);
     }

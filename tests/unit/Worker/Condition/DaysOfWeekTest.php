@@ -14,7 +14,7 @@ class DaysOfWeekTest extends TestCase
     public function testClass()
     {
         $condition = new DaysOfWeek();
-        $this->assertInstanceOf(\DevKokov\RotaPlanner\Condition\WorkerConditionInterface::class, $condition);
+        $this->assertInstanceOf(WorkerConditionInterface::class, $condition);
     }
 
     public function testCanWorkByDefault()

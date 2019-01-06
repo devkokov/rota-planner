@@ -11,7 +11,7 @@ class HoursPerWeekTest extends TestCase
     public function testClass()
     {
         $condition = new HoursPerWeek();
-        $this->assertInstanceOf(\DevKokov\RotaPlanner\Condition\WorkerConditionInterface::class, $condition);
+        $this->assertInstanceOf(WorkerConditionInterface::class, $condition);
     }
 
     public function testDefaultValues()

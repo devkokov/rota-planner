@@ -21,7 +21,7 @@ class WeekTest extends TestCase
     {
         $week = new Week();
 
-        $conditionBuilder = $this->getMockBuilder(\DevKokov\RotaPlanner\Condition\WeekConditionInterface::class);
+        $conditionBuilder = $this->getMockBuilder(WeekConditionInterface::class);
         $conditionA = $conditionBuilder->getMock();
         $conditionB = $conditionBuilder->getMock();
 
@@ -32,7 +32,7 @@ class WeekTest extends TestCase
 
         $this->assertIsArray($conditions);
         $this->assertCount(2, $conditions);
-        $this->assertContainsOnlyInstancesOf(\DevKokov\RotaPlanner\Condition\WeekConditionInterface::class, $conditions);
+        $this->assertContainsOnlyInstancesOf(WeekConditionInterface::class, $conditions);
         $this->assertContains($conditionA, $conditions);
         $this->assertContains($conditionB, $conditions);
     }

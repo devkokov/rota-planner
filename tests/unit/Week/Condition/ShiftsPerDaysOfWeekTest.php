@@ -2,19 +2,19 @@
 
 namespace DevKokov\RotaPlanner\Tests\Unit\Week\Condition;
 
+use DevKokov\RotaPlanner\Condition\WeekConditionInterface;
 use DevKokov\RotaPlanner\Day\Monday;
 use DevKokov\RotaPlanner\Day\Sunday;
 use DevKokov\RotaPlanner\Shift\ShiftInterface;
 use PHPUnit\Framework\TestCase;
-use DevKokov\RotaPlanner\Condition\WeekConditionInterface;
 use DevKokov\RotaPlanner\Condition\Week\ShiftsPerDaysOfWeek;
 
 class ShiftsPerDaysOfWeekTest extends TestCase
 {
     public function testClass()
     {
-        $condition = new \DevKokov\RotaPlanner\Condition\Week\ShiftsPerDaysOfWeek();
-        $this->assertInstanceOf(\DevKokov\RotaPlanner\Condition\WeekConditionInterface::class, $condition);
+        $condition = new ShiftsPerDaysOfWeek();
+        $this->assertInstanceOf(WeekConditionInterface::class, $condition);
     }
 
     public function testAddDay()
@@ -40,7 +40,7 @@ class ShiftsPerDaysOfWeekTest extends TestCase
 
     public function testRemoveDay()
     {
-        $condition = new \DevKokov\RotaPlanner\Condition\Week\ShiftsPerDaysOfWeek();
+        $condition = new ShiftsPerDaysOfWeek();
         $condition->addDay(new Monday(), [$this->getMockBuilder(ShiftInterface::class)->getMock()]);
         $condition->removeDay(new Monday());
 
