@@ -2,12 +2,10 @@
 
 namespace DevKokov\RotaPlanner\Tests\Unit\Week;
 
-use DevKokov\RotaPlanner\Shift\ShiftInterface;
 use PHPUnit\Framework\TestCase;
 use DevKokov\RotaPlanner\Week\Week;
 use DevKokov\RotaPlanner\Week\WeekInterface;
 use DevKokov\RotaPlanner\Condition\WeekConditionInterface;
-use DevKokov\RotaPlanner\Worker\WorkerInterface;
 
 class WeekTest extends TestCase
 {
@@ -35,36 +33,5 @@ class WeekTest extends TestCase
         $this->assertContainsOnlyInstancesOf(WeekConditionInterface::class, $conditions);
         $this->assertContains($conditionA, $conditions);
         $this->assertContains($conditionB, $conditions);
-    }
-
-    public function testGetShifts()
-    {
-        $week = new Week();
-
-        $shiftBuilder = $this->getMockBuilder(ShiftInterface::class);
-        $shiftA = $shiftBuilder->getMock();
-        $shiftB = $shiftBuilder->getMock();
-
-        $week->addShift($shiftA);
-        $week->addShift($shiftB);
-
-        $shifts = $week->getShifts();
-
-        $this->assertIsArray($shifts);
-        $this->assertCount(2, $shifts);
-        $this->assertContainsOnlyInstancesOf(ShiftInterface::class, $shifts);
-        $this->assertContains($shiftA, $shifts);
-        $this->assertContains($shiftB, $shifts);
-    }
-
-    public function testRemoveShift()
-    {
-        $week = new Week();
-
-        $shift = $this->getMockBuilder(ShiftInterface::class)->getMock();
-        $week->addShift($shift);
-        $week->removeShift($shift);
-
-        $this->assertEmpty($week->getShifts());
     }
 }
