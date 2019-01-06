@@ -37,26 +37,6 @@ class WeekTest extends TestCase
         $this->assertContains($conditionB, $conditions);
     }
 
-    public function testGetWorkers()
-    {
-        $week = new Week();
-
-        $workerBuilder = $this->getMockBuilder(WorkerInterface::class);
-        $workerA = $workerBuilder->getMock();
-        $workerB = $workerBuilder->getMock();
-
-        $week->addWorker($workerA);
-        $week->addWorker($workerB);
-
-        $workers = $week->getWorkers();
-
-        $this->assertIsArray($workers);
-        $this->assertCount(2, $workers);
-        $this->assertContainsOnlyInstancesOf(WorkerInterface::class, $workers);
-        $this->assertContains($workerA, $workers);
-        $this->assertContains($workerB, $workers);
-    }
-
     public function testGetShifts()
     {
         $week = new Week();
