@@ -4,6 +4,7 @@ namespace DevKokov\RotaPlanner\Condition\Shift;
 
 use DevKokov\RotaPlanner\Condition\ShiftConditionInterface;
 use DevKokov\RotaPlanner\Day\DayInterface;
+use DevKokov\RotaPlanner\RotaPlannerInterface;
 
 class WorkersPerDaysOfWeek implements ShiftConditionInterface
 {
@@ -30,5 +31,10 @@ class WorkersPerDaysOfWeek implements ShiftConditionInterface
     public function getDays(): array
     {
         return $this->days;
+    }
+
+    public function validate(RotaPlannerInterface $rotaPlanner)
+    {
+        // TODO: Implement validate() method.
     }
 }

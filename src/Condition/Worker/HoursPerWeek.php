@@ -3,6 +3,7 @@
 namespace DevKokov\RotaPlanner\Condition\Worker;
 
 use DevKokov\RotaPlanner\Condition\WorkerConditionInterface;
+use DevKokov\RotaPlanner\RotaPlannerInterface;
 
 class HoursPerWeek implements WorkerConditionInterface
 {
@@ -32,5 +33,10 @@ class HoursPerWeek implements WorkerConditionInterface
     public function setMax(float $max)
     {
         $this->max = $max;
+    }
+
+    public function validate(RotaPlannerInterface $rotaPlanner)
+    {
+        // TODO: Implement validate() method.
     }
 }

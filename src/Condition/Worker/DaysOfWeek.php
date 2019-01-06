@@ -4,6 +4,7 @@ namespace DevKokov\RotaPlanner\Condition\Worker;
 
 use DevKokov\RotaPlanner\Condition\WorkerConditionInterface;
 use DevKokov\RotaPlanner\Day\DayInterface;
+use DevKokov\RotaPlanner\RotaPlannerInterface;
 
 /**
  * Class DaysOfWeek
@@ -42,5 +43,10 @@ class DaysOfWeek implements WorkerConditionInterface
     public function getCanWorkOn(DayInterface $day): bool
     {
         return $this->days[get_class($day)] ?? $this->canWorkByDefault;
+    }
+
+    public function validate(RotaPlannerInterface $rotaPlanner)
+    {
+        // TODO: Implement validate() method.
     }
 }
