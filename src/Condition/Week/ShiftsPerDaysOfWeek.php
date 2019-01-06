@@ -2,6 +2,7 @@
 
 namespace DevKokov\RotaPlanner\Condition\Week;
 
+use DevKokov\RotaPlanner\Condition\WeekConditionInterface;
 use DevKokov\RotaPlanner\Day\DayInterface;
 use DevKokov\RotaPlanner\Shift\ShiftInterface;
 

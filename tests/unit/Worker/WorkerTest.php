@@ -5,7 +5,7 @@ namespace DevKokov\RotaPlanner\Tests\Unit\Worker;
 use PHPUnit\Framework\TestCase;
 use DevKokov\RotaPlanner\Worker\Worker;
 use DevKokov\RotaPlanner\Worker\WorkerInterface;
-use DevKokov\RotaPlanner\Condition\Worker\WorkerConditionInterface;
+use DevKokov\RotaPlanner\Condition\WorkerConditionInterface;
 
 class WorkerTest extends TestCase
 {
@@ -27,7 +27,7 @@ class WorkerTest extends TestCase
     {
         $worker = new Worker();
 
-        $conditionBuilder = $this->getMockBuilder(WorkerConditionInterface::class);
+        $conditionBuilder = $this->getMockBuilder(\DevKokov\RotaPlanner\Condition\WorkerConditionInterface::class);
         $conditionA = $conditionBuilder->getMock();
         $conditionB = $conditionBuilder->getMock();
 
@@ -38,7 +38,7 @@ class WorkerTest extends TestCase
 
         $this->assertIsArray($conditions);
         $this->assertCount(2, $conditions);
-        $this->assertContainsOnlyInstancesOf(WorkerConditionInterface::class, $conditions);
+        $this->assertContainsOnlyInstancesOf(\DevKokov\RotaPlanner\Condition\WorkerConditionInterface::class, $conditions);
         $this->assertContains($conditionA, $conditions);
         $this->assertContains($conditionB, $conditions);
     }

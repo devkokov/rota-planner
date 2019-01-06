@@ -3,7 +3,7 @@
 namespace DevKokov\RotaPlanner\Tests\Unit\Worker\Condition;
 
 use PHPUnit\Framework\TestCase;
-use DevKokov\RotaPlanner\Condition\Worker\WorkerConditionInterface;
+use DevKokov\RotaPlanner\Condition\WorkerConditionInterface;
 use DevKokov\RotaPlanner\Condition\Worker\HoursPerDay;
 
 class HoursPerDayTest extends TestCase
@@ -11,7 +11,7 @@ class HoursPerDayTest extends TestCase
     public function testClass()
     {
         $condition = new \DevKokov\RotaPlanner\Condition\Worker\HoursPerDay();
-        $this->assertInstanceOf(\DevKokov\RotaPlanner\Condition\Worker\WorkerConditionInterface::class, $condition);
+        $this->assertInstanceOf(\DevKokov\RotaPlanner\Condition\WorkerConditionInterface::class, $condition);
     }
 
     public function testDefaultValues()

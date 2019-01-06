@@ -2,6 +2,8 @@
 
 namespace DevKokov\RotaPlanner\Condition\Worker;
 
+use DevKokov\RotaPlanner\Condition\WorkerConditionInterface;
+
 class HoursPerDay implements WorkerConditionInterface
 {
     private $min = 0;

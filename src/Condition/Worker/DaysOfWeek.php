@@ -2,6 +2,7 @@
 
 namespace DevKokov\RotaPlanner\Condition\Worker;
 
+use DevKokov\RotaPlanner\Condition\WorkerConditionInterface;
 use DevKokov\RotaPlanner\Day\DayInterface;
 
 /**

@@ -2,7 +2,7 @@
 
 namespace DevKokov\RotaPlanner\Worker;
 
-use DevKokov\RotaPlanner\Condition\Worker\WorkerConditionInterface;
+use DevKokov\RotaPlanner\Condition\WorkerConditionInterface;
 
 class Worker implements WorkerInterface
 {
