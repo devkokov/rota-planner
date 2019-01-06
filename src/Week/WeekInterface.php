@@ -2,6 +2,7 @@
 
 namespace DevKokov\RotaPlanner\Week;
 
+use DevKokov\RotaPlanner\Shift\ShiftInterface;
 use DevKokov\RotaPlanner\Week\Condition\ConditionInterface;
 use DevKokov\RotaPlanner\Worker\WorkerInterface;
 
@@ -20,4 +21,13 @@ interface WeekInterface
      * @return ConditionInterface[]
      */
     public function getConditions(): array;
+
+    public function addShift(ShiftInterface $shift);
+
+    public function removeShift(ShiftInterface $shift);
+
+    /**
+     * @return ShiftInterface[]
+     */
+    public function getShifts(): array;
 }
