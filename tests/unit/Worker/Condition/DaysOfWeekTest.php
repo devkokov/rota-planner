@@ -2,6 +2,9 @@
 
 namespace DevKokov\RotaPlanner\Tests\Unit\Worker\Condition;
 
+use DevKokov\RotaPlanner\Day\Monday;
+use DevKokov\RotaPlanner\Day\Sunday;
+use DevKokov\RotaPlanner\Day\Tuesday;
 use PHPUnit\Framework\TestCase;
 use DevKokov\RotaPlanner\Worker\Condition\ConditionInterface;
 use DevKokov\RotaPlanner\Worker\Condition\DaysOfWeek;
@@ -14,25 +17,49 @@ class DaysOfWeekTest extends TestCase
         $this->assertInstanceOf(ConditionInterface::class, $condition);
     }
 
-    public function testDefaultValues()
+    public function testCanWorkByDefault()
     {
         $condition = new DaysOfWeek();
 
-        $this->assertTrue($condition->monday);
-        $this->assertTrue($condition->tuesday);
-        $this->assertTrue($condition->wednesday);
-        $this->assertTrue($condition->thursday);
-        $this->assertTrue($condition->friday);
-        $this->assertTrue($condition->saturday);
-        $this->assertTrue($condition->sunday);
+        $this->assertTrue($condition->canWorkByDefault);
+
+        $condition->canWorkByDefault = false;
+
+        $this->assertFalse($condition->canWorkByDefault);
     }
 
-    public function testSetValue()
+    public function testAddDay()
     {
         $condition = new DaysOfWeek();
 
-        $condition->monday = false;
+        $condition->addDay(new Monday(), true);
+        $condition->addDay(new Sunday(), false);
 
-        $this->assertFalse($condition->monday);
+        $days = $condition->getDays();
+
+        $this->assertIsArray($days);
+        $this->assertCount(2, $days);
+        $this->assertEquals([
+            Monday::class => true,
+            Sunday::class => false
+        ], $days);
+    }
+
+    public function testRemoveDay()
+    {
+        $condition = new DaysOfWeek();
+        $condition->addDay(new Monday(), false);
+        $condition->removeDay(new Monday());
+
+        $this->assertEmpty($condition->getDays());
+    }
+
+    public function testGetCanWorkOn()
+    {
+        $condition = new DaysOfWeek();
+        $condition->addDay(new Monday(), false);
+
+        $this->assertFalse($condition->getCanWorkOn(new Monday()));
+        $this->assertTrue($condition->getCanWorkOn(new Tuesday()));
     }
 }

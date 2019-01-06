@@ -2,6 +2,8 @@
 
 namespace DevKokov\RotaPlanner\Worker\Condition;
 
+use DevKokov\RotaPlanner\Day\DayInterface;
+
 /**
  * Class DaysOfWeek
  * @package DevKokov\RotaPlanner\Worker\Condition
@@ -10,11 +12,29 @@ namespace DevKokov\RotaPlanner\Worker\Condition;
  */
 class DaysOfWeek implements ConditionInterface
 {
-    public $monday = true;
-    public $tuesday = true;
-    public $wednesday = true;
-    public $thursday = true;
-    public $friday = true;
-    public $saturday = true;
-    public $sunday = true;
+    public $canWorkByDefault = true;
+    private $days = [];
+
+    public function addDay(DayInterface $day, bool $canWork)
+    {
+        $this->days[get_class($day)] = $canWork;
+    }
+
+    public function removeDay(DayInterface $day)
+    {
+        unset($this->days[get_class($day)]);
+    }
+
+    /**
+     * @return bool[]
+     */
+    public function getDays(): array
+    {
+        return $this->days;
+    }
+
+    public function getCanWorkOn(DayInterface $day): bool
+    {
+        return $this->days[get_class($day)] ?? $this->canWorkByDefault;
+    }
 }
