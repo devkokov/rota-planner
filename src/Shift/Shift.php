@@ -6,6 +6,7 @@ class Shift implements ShiftInterface
 {
     private $name = '';
     private $duration = 0;
+    private $numOfWorkers = 0;
 
     public function setName(string $name)
     {
@@ -25,5 +26,15 @@ class Shift implements ShiftInterface
     public function getDuration(): float
     {
         return $this->duration;
+    }
+
+    public function setNumOfWorkers(int $workers)
+    {
+        $this->numOfWorkers = $workers;
+    }
+
+    public function getNumOfWorkers(): int
+    {
+        return $this->numOfWorkers;
     }
 }

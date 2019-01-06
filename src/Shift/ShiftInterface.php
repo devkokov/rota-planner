@@ -8,4 +8,6 @@ interface ShiftInterface
     public function getName(): string;
     public function setDuration(float $hours);
     public function getDuration(): float;
+    public function setNumOfWorkers(int $workers);
+    public function getNumOfWorkers(): int;
 }

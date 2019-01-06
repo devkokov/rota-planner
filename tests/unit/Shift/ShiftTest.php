@@ -29,4 +29,12 @@ class ShiftTest extends TestCase
 
         $this->assertEquals(3.5, $shift->getDuration());
     }
+
+    public function testGetNumOfWorkers()
+    {
+        $shift = new Shift();
+        $shift->setNumOfWorkers(10);
+
+        $this->assertEquals(10, $shift->getNumOfWorkers());
+    }
 }
