@@ -1,6 +1,6 @@
 <?php
 
-namespace DevKokov\RotaPlanner\Tests\Unit\Rota;
+namespace DevKokov\RotaPlanner\Tests\Unit\Week;
 
 use PHPUnit\Framework\TestCase;
 use DevKokov\RotaPlanner\Week\Week;
