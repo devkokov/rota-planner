@@ -8,6 +8,20 @@ namespace DevKokov\RotaPlanner\Plan;
  *
  * Representation of a planned week
  */
-class WeekPlan
+class WeekPlan implements WeekPlanInterface
 {
+    private $dayPlans = [];
+
+    public function addDayPlan(DayPlanInterface $dayPlan)
+    {
+        $this->dayPlans[] = $dayPlan;
+    }
+
+    /**
+     * @return DayPlanInterface[]
+     */
+    public function getDayPlans(): array
+    {
+        return $this->dayPlans;
+    }
 }

@@ -8,6 +8,20 @@ namespace DevKokov\RotaPlanner\Plan;
  *
  * Representation of a planned shift
  */
-class ShiftPlan
+class ShiftPlan implements ShiftPlanInterface
 {
+    private $workerPlans = [];
+
+    public function addWorkerPlan(WorkerPlanInterface $workerPlan)
+    {
+        $this->workerPlans[] = $workerPlan;
+    }
+
+    /**
+     * @return WorkerPlanInterface[]
+     */
+    public function getWorkerPlans(): array
+    {
+        return $this->workerPlans;
+    }
 }
