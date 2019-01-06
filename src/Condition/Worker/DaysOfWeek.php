@@ -15,6 +15,11 @@ class DaysOfWeek implements WorkerConditionInterface
     public $canWorkByDefault = true;
     private $days = [];
 
+    public function getValidationLevel(): string
+    {
+        return self::VALIDATION_LEVEL_DAY;
+    }
+
     public function addDay(DayInterface $day, bool $canWork)
     {
         $this->days[get_class($day)] = $canWork;

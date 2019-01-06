@@ -2,6 +2,8 @@
 
 namespace DevKokov\RotaPlanner\Condition\Worker;
 
-interface WorkerConditionInterface
+use DevKokov\RotaPlanner\Condition\ConditionInterface;
+
+interface WorkerConditionInterface extends ConditionInterface
 {
 }

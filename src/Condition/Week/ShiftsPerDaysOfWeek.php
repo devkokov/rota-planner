@@ -9,6 +9,11 @@ class ShiftsPerDaysOfWeek implements WeekConditionInterface
 {
     private $days = [];
 
+    public function getValidationLevel(): string
+    {
+        return self::VALIDATION_LEVEL_DAY;
+    }
+
     /**
      * @param DayInterface $day
      * @param ShiftInterface[] $shifts

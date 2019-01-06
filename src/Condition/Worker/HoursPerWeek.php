@@ -7,6 +7,11 @@ class HoursPerWeek implements WorkerConditionInterface
     private $min = 0;
     private $max = 0;
 
+    public function getValidationLevel(): string
+    {
+        return self::VALIDATION_LEVEL_WEEK;
+    }
+
     public function getMin(): float
     {
         return $this->min;

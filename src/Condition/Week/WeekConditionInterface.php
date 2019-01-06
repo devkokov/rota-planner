@@ -2,6 +2,8 @@
 
 namespace DevKokov\RotaPlanner\Condition\Week;
 
-interface WeekConditionInterface
+use DevKokov\RotaPlanner\Condition\ConditionInterface;
+
+interface WeekConditionInterface extends ConditionInterface
 {
 }
