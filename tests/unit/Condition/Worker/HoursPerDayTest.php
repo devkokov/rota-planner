@@ -1,6 +1,6 @@
 <?php
 
-namespace DevKokov\RotaPlanner\Tests\Unit\Worker\Condition;
+namespace DevKokov\RotaPlanner\Tests\Unit\Condition\Worker;
 
 use PHPUnit\Framework\TestCase;
 use DevKokov\RotaPlanner\Condition\WorkerConditionInterface;

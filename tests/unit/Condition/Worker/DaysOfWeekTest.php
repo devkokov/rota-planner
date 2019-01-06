@@ -1,6 +1,6 @@
 <?php
 
-namespace DevKokov\RotaPlanner\Tests\Unit\Worker\Condition;
+namespace DevKokov\RotaPlanner\Tests\Unit\Condition\Worker;
 
 use DevKokov\RotaPlanner\Day\Monday;
 use DevKokov\RotaPlanner\Day\Sunday;
