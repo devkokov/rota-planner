@@ -6,7 +6,7 @@ use DevKokov\RotaPlanner\Worker\WorkerInterface;
 
 interface WorkerPlanInterface
 {
-    public function setWorker(WorkerInterface $worker);
+    public function __construct(WorkerInterface $worker);
 
     public function getWorker(): WorkerInterface;
 

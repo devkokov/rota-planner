@@ -11,21 +11,26 @@ class WorkerPlanTest extends TestCase
 {
     public function testClass()
     {
-        $plan = new WorkerPlan();
+        $plan = new WorkerPlan(
+            $this->getMockBuilder(WorkerInterface::class)->getMock()
+        );
         $this->assertInstanceOf(WorkerPlanInterface::class, $plan);
     }
 
     public function testGetWorker()
     {
-        $plan = new WorkerPlan();
+        $plan = new WorkerPlan(
+            $this->getMockBuilder(WorkerInterface::class)->getMock()
+        );
         $worker = $this->getMockBuilder(WorkerInterface::class)->getMock();
-        $plan->setWorker($worker);
         $this->assertEquals($worker, $plan->getWorker());
     }
 
     public function testGetHours()
     {
-        $plan = new WorkerPlan();
+        $plan = new WorkerPlan(
+            $this->getMockBuilder(WorkerInterface::class)->getMock()
+        );
         $plan->setHours(2.5);
         $this->assertEquals(2.5, $plan->getHours());
     }

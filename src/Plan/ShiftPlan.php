@@ -2,6 +2,8 @@
 
 namespace DevKokov\RotaPlanner\Plan;
 
+use DevKokov\RotaPlanner\Shift\ShiftInterface;
+
 /**
  * Class ShiftPlan
  * @package DevKokov\RotaPlanner\Plan
@@ -10,7 +12,13 @@ namespace DevKokov\RotaPlanner\Plan;
  */
 class ShiftPlan implements ShiftPlanInterface
 {
+    private $shift;
     private $workerPlans = [];
+
+    public function __construct(ShiftInterface $shift)
+    {
+        $this->shift = $shift;
+    }
 
     public function addWorkerPlan(WorkerPlanInterface $workerPlan)
     {

@@ -9,7 +9,7 @@ class WorkerPlan implements WorkerPlanInterface
     private $worker;
     private $hours;
 
-    public function setWorker(WorkerInterface $worker)
+    public function __construct(WorkerInterface $worker)
     {
         $this->worker = $worker;
     }

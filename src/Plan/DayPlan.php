@@ -2,6 +2,8 @@
 
 namespace DevKokov\RotaPlanner\Plan;
 
+use DevKokov\RotaPlanner\Day\DayInterface;
+
 /**
  * Class DayPlan
  * @package DevKokov\RotaPlanner\Plan
@@ -10,7 +12,13 @@ namespace DevKokov\RotaPlanner\Plan;
  */
 class DayPlan implements DayPlanInterface
 {
+    private $day;
     private $shiftPlans = [];
+
+    public function __construct(DayInterface $day)
+    {
+        $this->day = $day;
+    }
 
     public function addShiftPlan(ShiftPlanInterface $shiftPlan)
     {

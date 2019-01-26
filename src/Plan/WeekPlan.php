@@ -2,6 +2,8 @@
 
 namespace DevKokov\RotaPlanner\Plan;
 
+use DevKokov\RotaPlanner\Week\WeekInterface;
+
 /**
  * Class WeekPlan
  * @package DevKokov\RotaPlanner\Plan
@@ -10,7 +12,13 @@ namespace DevKokov\RotaPlanner\Plan;
  */
 class WeekPlan implements WeekPlanInterface
 {
+    private $week;
     private $dayPlans = [];
+
+    public function __construct(WeekInterface $week)
+    {
+        $this->week = $week;
+    }
 
     public function addDayPlan(DayPlanInterface $dayPlan)
     {
