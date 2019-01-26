@@ -18,6 +18,13 @@ class WeekPlanTest extends TestCase
         $this->assertInstanceOf(WeekPlanInterface::class, $plan);
     }
 
+    public function testGetWeek()
+    {
+        $week = $this->getMockBuilder(WeekInterface::class)->getMock();
+        $plan = new WeekPlan($week);
+        $this->assertEquals($week, $plan->getWeek());
+    }
+
     public function testGetDayPlans()
     {
         $plan = new WeekPlan(

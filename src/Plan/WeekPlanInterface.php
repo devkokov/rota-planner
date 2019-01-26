@@ -8,6 +8,8 @@ interface WeekPlanInterface
 {
     public function __construct(WeekInterface $week);
 
+    public function getWeek(): WeekInterface;
+
     public function addDayPlan(DayPlanInterface $dayPlan);
 
     /**

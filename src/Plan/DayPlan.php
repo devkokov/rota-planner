@@ -20,6 +20,11 @@ class DayPlan implements DayPlanInterface
         $this->day = $day;
     }
 
+    public function getDay(): DayInterface
+    {
+        return $this->day;
+    }
+
     public function addShiftPlan(ShiftPlanInterface $shiftPlan)
     {
         $this->shiftPlans[] = $shiftPlan;

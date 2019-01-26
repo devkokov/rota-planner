@@ -8,6 +8,8 @@ interface ShiftPlanInterface
 {
     public function __construct(ShiftInterface $shift);
 
+    public function getShift(): ShiftInterface;
+
     public function addWorkerPlan(WorkerPlanInterface $workerPlan);
 
     /**

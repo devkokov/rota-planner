@@ -8,6 +8,8 @@ interface DayPlanInterface
 {
     public function __construct(DayInterface $day);
 
+    public function getDay(): DayInterface;
+
     public function addShiftPlan(ShiftPlanInterface $shiftPlan);
 
     /**

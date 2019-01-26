@@ -18,6 +18,13 @@ class ShiftPlanTest extends TestCase
         $this->assertInstanceOf(ShiftPlanInterface::class, $plan);
     }
 
+    public function testGetShift()
+    {
+        $shift = $this->getMockBuilder(ShiftInterface::class)->getMock();
+        $plan = new ShiftPlan($shift);
+        $this->assertEquals($shift, $plan->getShift());
+    }
+
     public function testGetWorkerPlans()
     {
         $plan = new ShiftPlan(

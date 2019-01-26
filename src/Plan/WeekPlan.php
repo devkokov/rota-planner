@@ -20,6 +20,11 @@ class WeekPlan implements WeekPlanInterface
         $this->week = $week;
     }
 
+    public function getWeek(): WeekInterface
+    {
+        return $this->week;
+    }
+
     public function addDayPlan(DayPlanInterface $dayPlan)
     {
         $this->dayPlans[] = $dayPlan;

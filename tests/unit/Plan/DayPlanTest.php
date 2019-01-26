@@ -18,6 +18,13 @@ class DayPlanTest extends TestCase
         $this->assertInstanceOf(DayPlanInterface::class, $plan);
     }
 
+    public function testGetDay()
+    {
+        $day = $this->getMockBuilder(DayInterface::class)->getMock();
+        $plan = new DayPlan($day);
+        $this->assertEquals($day, $plan->getDay());
+    }
+
     public function testGetShiftPlans()
     {
         $plan = new DayPlan(

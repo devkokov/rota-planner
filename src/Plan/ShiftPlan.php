@@ -20,6 +20,11 @@ class ShiftPlan implements ShiftPlanInterface
         $this->shift = $shift;
     }
 
+    public function getShift(): ShiftInterface
+    {
+        return $this->shift;
+    }
+
     public function addWorkerPlan(WorkerPlanInterface $workerPlan)
     {
         $this->workerPlans[] = $workerPlan;

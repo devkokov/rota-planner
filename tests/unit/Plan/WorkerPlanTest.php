@@ -19,10 +19,8 @@ class WorkerPlanTest extends TestCase
 
     public function testGetWorker()
     {
-        $plan = new WorkerPlan(
-            $this->getMockBuilder(WorkerInterface::class)->getMock()
-        );
         $worker = $this->getMockBuilder(WorkerInterface::class)->getMock();
+        $plan = new WorkerPlan($worker);
         $this->assertEquals($worker, $plan->getWorker());
     }
 
