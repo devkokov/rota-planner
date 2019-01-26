@@ -2,11 +2,14 @@
 
 namespace DevKokov\RotaPlanner\Shift;
 
+use DevKokov\RotaPlanner\Condition\ShiftConditionInterface;
+
 class Shift implements ShiftInterface
 {
     private $name = '';
     private $duration = 0;
     private $numOfWorkers = 0;
+    private $conditions;
 
     public function setName(string $name)
     {
@@ -36,5 +39,18 @@ class Shift implements ShiftInterface
     public function getNumOfWorkers(): int
     {
         return $this->numOfWorkers;
+    }
+
+    public function addCondition(ShiftConditionInterface $condition)
+    {
+        $this->conditions[] = $condition;
+    }
+
+    /**
+     * @return ShiftConditionInterface[]
+     */
+    public function getConditions(): array
+    {
+        return $this->conditions;
     }
 }
