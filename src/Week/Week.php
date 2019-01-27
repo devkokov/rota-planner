@@ -2,22 +2,41 @@
 
 namespace DevKokov\RotaPlanner\Week;
 
-use DevKokov\RotaPlanner\Condition\WeekConditionInterface;
+use DevKokov\RotaPlanner\Day\DayInterface;
+use DevKokov\RotaPlanner\Shift\ShiftInterface;
 
 class Week implements WeekInterface
 {
-    private $conditions = [];
+    private $shifts = [];
+    private $shiftsOn = [];
 
-    public function addCondition(WeekConditionInterface $condition)
+    /**
+     * @param ShiftInterface[] $shifts
+     */
+    public function setShifts(array $shifts)
     {
-        $this->conditions[] = $condition;
+        $this->shifts = $shifts;
     }
 
     /**
-     * @return WeekConditionInterface[]
+     * @return ShiftInterface[]
      */
-    public function getConditions(): array
+    public function getShifts(): array
     {
-        return $this->conditions;
+        return $this->shifts;
+    }
+
+    public function setShiftsOn(DayInterface $day, array $shifts)
+    {
+        $this->shiftsOn[get_class($day)] = $shifts;
+    }
+
+    /**
+     * @param DayInterface $day
+     * @return ShiftInterface[]|null
+     */
+    public function getShiftsOn(DayInterface $day)
+    {
+        return $this->shiftsOn[get_class($day)] ?? null;
     }
 }

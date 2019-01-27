@@ -2,14 +2,29 @@
 
 namespace DevKokov\RotaPlanner\Week;
 
-use DevKokov\RotaPlanner\Condition\WeekConditionInterface;
+use DevKokov\RotaPlanner\Day\DayInterface;
+use DevKokov\RotaPlanner\Shift\ShiftInterface;
 
 interface WeekInterface
 {
-    public function addCondition(WeekConditionInterface $condition);
+    /**
+     * @param ShiftInterface[] $shifts
+     */
+    public function setShifts(array $shifts);
 
     /**
-     * @return WeekConditionInterface[]
+     * @return ShiftInterface[]
      */
-    public function getConditions(): array;
+    public function getShifts(): array;
+    /**
+     * @param DayInterface $day
+     * @param ShiftInterface[] $shifts
+     */
+    public function setShiftsOn(DayInterface $day, array $shifts);
+
+    /**
+     * @param DayInterface $day
+     * @return ShiftInterface[]|null
+     */
+    public function getShiftsOn(DayInterface $day);
 }

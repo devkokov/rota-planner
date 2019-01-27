@@ -2,10 +2,11 @@
 
 namespace DevKokov\RotaPlanner\Tests\Unit\Week;
 
+use DevKokov\RotaPlanner\Day\DayInterface;
+use DevKokov\RotaPlanner\Shift\ShiftInterface;
 use PHPUnit\Framework\TestCase;
 use DevKokov\RotaPlanner\Week\Week;
 use DevKokov\RotaPlanner\Week\WeekInterface;
-use DevKokov\RotaPlanner\Condition\WeekConditionInterface;
 
 class WeekTest extends TestCase
 {
@@ -15,23 +16,21 @@ class WeekTest extends TestCase
         $this->assertInstanceOf(WeekInterface::class, $week);
     }
 
-    public function testGetConditions()
+    public function testGetShifts()
     {
         $week = new Week();
+        $shifts = [$this->getMockBuilder(ShiftInterface::class)->getMock()];
+        $week->setShifts($shifts);
+        $this->assertEquals($shifts, $week->getShifts());
+    }
 
-        $conditionBuilder = $this->getMockBuilder(WeekConditionInterface::class);
-        $conditionA = $conditionBuilder->getMock();
-        $conditionB = $conditionBuilder->getMock();
-
-        $week->addCondition($conditionA);
-        $week->addCondition($conditionB);
-
-        $conditions = $week->getConditions();
-
-        $this->assertIsArray($conditions);
-        $this->assertCount(2, $conditions);
-        $this->assertContainsOnlyInstancesOf(WeekConditionInterface::class, $conditions);
-        $this->assertContains($conditionA, $conditions);
-        $this->assertContains($conditionB, $conditions);
+    public function testGetShiftsOn()
+    {
+        $week = new Week();
+        $day = $this->getMockBuilder(DayInterface::class)->getMock();
+        $this->assertNull($week->getShiftsOn($day));
+        $shifts = [$this->getMockBuilder(ShiftInterface::class)->getMock()];
+        $week->setShiftsOn($day, $shifts);
+        $this->assertEquals($shifts, $week->getShiftsOn($day));
     }
 }
