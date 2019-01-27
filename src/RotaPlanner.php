@@ -3,47 +3,36 @@
 namespace DevKokov\RotaPlanner;
 
 use DevKokov\RotaPlanner\Plan\WeekPlanInterface;
-use DevKokov\RotaPlanner\Shift\ShiftInterface;
+use DevKokov\RotaPlanner\Resolver\ResolverInterface;
 use DevKokov\RotaPlanner\Week\WeekInterface;
 use DevKokov\RotaPlanner\Worker\WorkerInterface;
 
 class RotaPlanner implements RotaPlannerInterface
 {
-    private $weeks;
-    private $shifts;
+    private $week;
     private $workers;
-    private $weekPlans;
+    private $weekPlan;
 
     /**
-     * @return WeekInterface[]
+     * RotaPlanner constructor.
+     * @param WeekInterface $week
+     * @param WorkerInterface[] $workers
+     * @param ResolverInterface|null $resolver
      */
-    public function getWeeks(): array
+    public function __construct(WeekInterface $week, array $workers, ResolverInterface $resolver = null)
     {
-        return $this->weeks;
+        $this->week = $week;
+        $this->workers = $workers;
+
+        if ($resolver) {
+            $resolver->resolve($this);
+        }
     }
 
-    /**
-     * @param WeekInterface[] $weeks
-     */
-    public function setWeeks($weeks)
-    {
-        $this->weeks = $weeks;
-    }
 
-    /**
-     * @return ShiftInterface[]
-     */
-    public function getShifts(): array
+    public function getWeek(): WeekInterface
     {
-        return $this->shifts;
-    }
-
-    /**
-     * @param ShiftInterface[] $shifts
-     */
-    public function setShifts($shifts)
-    {
-        $this->shifts = $shifts;
+        return $this->week;
     }
 
     /**
@@ -54,24 +43,13 @@ class RotaPlanner implements RotaPlannerInterface
         return $this->workers;
     }
 
-    /**
-     * @param WorkerInterface[] $workers
-     */
-    public function setWorkers($workers)
+    public function getWeekPlan(): WeekPlanInterface
     {
-        $this->workers = $workers;
+        return $this->weekPlan;
     }
 
-    /**
-     * @return WeekPlanInterface[]
-     */
-    public function getWeekPlans(): array
+    public function setWeekPlan(WeekPlanInterface $weekPlan)
     {
-        return $this->weekPlans;
-    }
-
-    public function addWeekPlan(WeekPlanInterface $weekPlan)
-    {
-        $this->weekPlans[] = $weekPlan;
+        $this->weekPlan = $weekPlan;
     }
 }

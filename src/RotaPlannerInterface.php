@@ -3,29 +3,25 @@
 namespace DevKokov\RotaPlanner;
 
 use DevKokov\RotaPlanner\Plan\WeekPlanInterface;
-use DevKokov\RotaPlanner\Shift\ShiftInterface;
+use DevKokov\RotaPlanner\Resolver\ResolverInterface;
 use DevKokov\RotaPlanner\Week\WeekInterface;
 use DevKokov\RotaPlanner\Worker\WorkerInterface;
 
 interface RotaPlannerInterface
 {
     /**
-     * @return WeekInterface[]
+     * RotaPlannerInterface constructor.
+     * @param WeekInterface $week
+     * @param WorkerInterface[] $workers
+     * @param ResolverInterface|null $resolver
      */
-    public function getWeeks(): array;
-
-    /**
-     * @return ShiftInterface[]
-     */
-    public function getShifts(): array;
+    public function __construct(WeekInterface $week, array $workers, ResolverInterface $resolver = null);
 
     /**
      * @return WorkerInterface[]
      */
     public function getWorkers(): array;
-
-    /**
-     * @return WeekPlanInterface[]
-     */
-    public function getWeekPlans(): array;
+    public function getWeek(): WeekInterface;
+    public function setWeekPlan(WeekPlanInterface $weekPlan);
+    public function getWeekPlan(): WeekPlanInterface;
 }

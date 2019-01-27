@@ -5,48 +5,44 @@ namespace DevKokov\RotaPlanner\Tests\Unit;
 use DevKokov\RotaPlanner\Plan\WeekPlanInterface;
 use DevKokov\RotaPlanner\RotaPlanner;
 use DevKokov\RotaPlanner\RotaPlannerInterface;
-use DevKokov\RotaPlanner\Shift\ShiftInterface;
 use DevKokov\RotaPlanner\Week\WeekInterface;
 use DevKokov\RotaPlanner\Worker\WorkerInterface;
 use PHPUnit\Framework\TestCase;
 
 class RotaPlannerTest extends TestCase
 {
+    private function getRotaPlannerInstance(): RotaPlanner
+    {
+        $week = $this->getMockBuilder(WeekInterface::class)->getMock();
+        $rotaPlanner = new RotaPlanner($week, []);
+        return $rotaPlanner;
+    }
+
     public function testClass()
     {
-        $rotaPlanner = new RotaPlanner();
-        $this->assertInstanceOf(RotaPlannerInterface::class, $rotaPlanner);
+        $this->assertInstanceOf(RotaPlannerInterface::class, $this->getRotaPlannerInstance());
     }
 
-    public function testGetWeeks()
+    public function testGetWeek()
     {
-        $rotaPlanner = new RotaPlanner();
         $week = $this->getMockBuilder(WeekInterface::class)->getMock();
-        $rotaPlanner->setWeeks([$week]);
-        $this->assertEquals([$week], $rotaPlanner->getWeeks());
-    }
-
-    public function testGetShifts()
-    {
-        $rotaPlanner = new RotaPlanner();
-        $shift = $this->getMockBuilder(ShiftInterface::class)->getMock();
-        $rotaPlanner->setShifts([$shift]);
-        $this->assertEquals([$shift], $rotaPlanner->getShifts());
+        $rotaPlanner = new RotaPlanner($week, []);
+        $this->assertEquals($week, $rotaPlanner->getWeek());
     }
 
     public function testGetWorkers()
     {
-        $rotaPlanner = new RotaPlanner();
+        $week = $this->getMockBuilder(WeekInterface::class)->getMock();
         $worker = $this->getMockBuilder(WorkerInterface::class)->getMock();
-        $rotaPlanner->setWorkers([$worker]);
+        $rotaPlanner = new RotaPlanner($week, [$worker]);
         $this->assertEquals([$worker], $rotaPlanner->getWorkers());
     }
 
-    public function testGetWeekPlans()
+    public function testGetWeekPlan()
     {
-        $rotaPlanner = new RotaPlanner();
+        $rotaPlanner = $this->getRotaPlannerInstance();
         $weekPlan = $this->getMockBuilder(WeekPlanInterface::class)->getMock();
-        $rotaPlanner->addWeekPlan($weekPlan);
-        $this->assertEquals([$weekPlan], $rotaPlanner->getWeekPlans());
+        $rotaPlanner->setWeekPlan($weekPlan);
+        $this->assertEquals($weekPlan, $rotaPlanner->getWeekPlan());
     }
 }
