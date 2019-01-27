@@ -2,10 +2,10 @@
 
 namespace DevKokov\RotaPlanner\Tests\Unit\Worker;
 
+use DevKokov\RotaPlanner\Day\DayInterface;
 use PHPUnit\Framework\TestCase;
 use DevKokov\RotaPlanner\Worker\Worker;
 use DevKokov\RotaPlanner\Worker\WorkerInterface;
-use DevKokov\RotaPlanner\Condition\WorkerConditionInterface;
 
 class WorkerTest extends TestCase
 {
@@ -23,23 +23,50 @@ class WorkerTest extends TestCase
         $this->assertEquals('Worker Name', $worker->getName());
     }
 
-    public function testGetConditions()
+    public function testGetCanWorkOnDefault()
     {
         $worker = new Worker();
+        $worker->setCanWorkOnDefault(false);
+        $this->assertFalse($worker->getCanWorkOnDefault());
+    }
 
-        $conditionBuilder = $this->getMockBuilder(WorkerConditionInterface::class);
-        $conditionA = $conditionBuilder->getMock();
-        $conditionB = $conditionBuilder->getMock();
+    public function testGetCanWorkOn()
+    {
+        $worker = new Worker();
+        $day = $this->getMockBuilder(DayInterface::class)->getMock();
+        $worker->setCanWorkOn($day, false);
+        $this->assertFalse($worker->getCanWorkOn($day));
+    }
 
-        $worker->addCondition($conditionA);
-        $worker->addCondition($conditionB);
+    public function testGetMinHoursPerDay()
+    {
+        $worker = new Worker();
+        $worker->setMinHoursPerDay(2);
+        $this->assertIsFloat($worker->getMinHoursPerDay());
+        $this->assertEquals(2, $worker->getMinHoursPerDay());
+    }
 
-        $conditions = $worker->getConditions();
+    public function testGetMaxHoursPerDay()
+    {
+        $worker = new Worker();
+        $worker->setMaxHoursPerDay(2);
+        $this->assertIsFloat($worker->getMaxHoursPerDay());
+        $this->assertEquals(2, $worker->getMaxHoursPerDay());
+    }
 
-        $this->assertIsArray($conditions);
-        $this->assertCount(2, $conditions);
-        $this->assertContainsOnlyInstancesOf(WorkerConditionInterface::class, $conditions);
-        $this->assertContains($conditionA, $conditions);
-        $this->assertContains($conditionB, $conditions);
+    public function testGetMinHoursPerWeek()
+    {
+        $worker = new Worker();
+        $worker->setMinHoursPerWeek(2);
+        $this->assertIsFloat($worker->getMinHoursPerWeek());
+        $this->assertEquals(2, $worker->getMinHoursPerWeek());
+    }
+
+    public function testGetMaxHoursPerWeek()
+    {
+        $worker = new Worker();
+        $worker->setMaxHoursPerWeek(2);
+        $this->assertIsFloat($worker->getMaxHoursPerWeek());
+        $this->assertEquals(2, $worker->getMaxHoursPerWeek());
     }
 }
