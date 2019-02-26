@@ -15,7 +15,7 @@ interface RotaPlannerInterface
      * @param WorkerInterface[] $workers
      * @param ResolverInterface|null $resolver
      */
-    public function __construct(WeekInterface $week, array $workers, ResolverInterface $resolver = null);
+    public function __construct(WeekInterface $week, array $workers, ResolverInterface &$resolver = null);
 
     /**
      * @return WorkerInterface[]

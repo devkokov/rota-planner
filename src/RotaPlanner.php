@@ -19,7 +19,7 @@ class RotaPlanner implements RotaPlannerInterface
      * @param WorkerInterface[] $workers
      * @param ResolverInterface|null $resolver
      */
-    public function __construct(WeekInterface $week, array $workers, ResolverInterface $resolver = null)
+    public function __construct(WeekInterface $week, array $workers, ResolverInterface &$resolver = null)
     {
         $this->week = $week;
         $this->workers = $workers;
@@ -51,5 +51,29 @@ class RotaPlanner implements RotaPlannerInterface
     public function setWeekPlan(WeekPlanInterface $weekPlan)
     {
         $this->weekPlan = $weekPlan;
+    }
+
+    public function outputPlan()
+    {
+        if (!$this->weekPlan instanceof WeekPlanInterface) {
+            echo "\nNothing to output.\n";
+            return;
+        }
+
+        echo "\nWeek Plan\n\n";
+
+        foreach ($this->weekPlan->getDayPlans() as $dayPlan) {
+            echo strtoupper((new \ReflectionClass($dayPlan->getDay()))->getShortName()) . "\n";
+
+            foreach ($dayPlan->getShiftPlans() as $shiftPlan) {
+                echo $shiftPlan->getShift()->getName() . "\n";
+
+                foreach ($shiftPlan->getWorkerPlans() as $workerPlan) {
+                    echo $workerPlan->getWorker()->getName() . " - " . $workerPlan->getHours() . "\n";
+                }
+
+                echo "\n";
+            }
+        }
     }
 }
